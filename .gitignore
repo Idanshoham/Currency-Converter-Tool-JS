@@ -2,10 +2,12 @@
 /node_modules
 /.pnp
 .pnp.js
-/Files
 
 # testing
 /coverage
+
+# other folders
+/Files
 
 # misc
 .DS_Store
