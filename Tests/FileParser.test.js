@@ -1,6 +1,7 @@
-jest.mock('../Services/CurrencyConverterService.js');
-
 import { getConvertedFromCurrencyValues } from '../Controllers/FileParser.js';
+
+jest.mock('../Services/CurrencyConverterService.js');
+const mockCurrencyConverterService = jest.fn().mockResolvedValue(3.5);
 
 test('call file parser with the standard file name', () => {
   /*
@@ -11,10 +12,7 @@ test('call file parser with the standard file name', () => {
     5.0
     10.5
   */
-  getConvertedFromCurrencyValues('Currencies')
-    .then(result => {
-      expect(result).toBe([ 3.5, 17.5, 36.75 ]);
-  });
+  return expect(getConvertedFromCurrencyValues('Currencies', mockCurrencyConverterService)).resolves.toStrictEqual([ 3.5, 17.5, 36.75 ]);
 });
 
 test('call file parser with the an empty file', () => {
@@ -23,8 +21,5 @@ test('call file parser with the an empty file', () => {
     USD
     ILS
   */
-  getConvertedFromCurrencyValues('Currencies')
-    .then(result => {
-      expect(result).toBe([]);
-  });
+  return expect(getConvertedFromCurrencyValues('CurrenciesEmpty', mockCurrencyConverterService)).resolves.toStrictEqual([]);
 });
