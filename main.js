@@ -1,4 +1,4 @@
-import { getConvertedFromCurrencyValues } from './Controllers/FileParser.js';
+import { getConvertedFromCurrencyValues } from './Services/FileParser.js';
 import { getSpecificRateBetween } from './Services/CurrencyConverterService.js';
 
 const getResults = async () => {
@@ -8,8 +8,8 @@ const getResults = async () => {
         const result = await getConvertedFromCurrencyValues(myArgs[0], getSpecificRateBetween);
         console.log('after:');
         console.log(result);
-    } catch (err) {
-        console.log(err);
+    } catch(err) {
+        console.log("Something went wrong: ", err);
     }
 }
 getResults();

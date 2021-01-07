@@ -1,4 +1,4 @@
-import { getConvertedFromCurrencyValues } from '../Controllers/FileParser.js';
+import { getConvertedFromCurrencyValues } from '../Services/FileParser.js';
 
 jest.mock('../Services/CurrencyConverterService.js');
 const mockCurrencyConverterService = jest.fn().mockResolvedValue(3.5);
